@@ -232,21 +232,21 @@ body, html {
   text-align: center;
   font-weight: 600;
   font-size: 30px;
-  font-family: cursive;
+  font-family: Times New Roman;
   color: #3d3d3d;
 }
 #scr_time {
   text-align: center;
   font-weight: 600;
   font-size: 22px;
-  font-family: cursive;
+  font-family: Times New Roman;
   color: #3d3d3d;
 }
 #scr_moves {
   text-align: center;
   font-weight: 600;
   font-size: 22px;
-  font-family: cursive;
+  font-family: Times New Roman;
   color: #3d3d3d;
 }
 .start {
@@ -271,7 +271,7 @@ body, html {
 .button {
   margin: 0px 10px 10px 0px;
   border-radius: 10px;
-  font-family: cursive;
+  font-family: Times New Roman;
   font-size: 25px;
   color: #fff;
   text-decoration: none;
@@ -288,7 +288,7 @@ body, html {
 }
 .i {
   text-align: center;
-  font-family: cursive;
+  font-family: Times New Roman;
   font-weight: 550;
   color: #3c3c3c;
 }
