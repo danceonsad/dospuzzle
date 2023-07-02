@@ -25,24 +25,8 @@ let playlist = [
 ];
  
 let treck; // Переменная с индексом трека
- 
-// Событие перед загрузкой страницы
-window.onload = function() {
-    treck = 0; // Присваиваем переменной ноль
-    audio.src = './assets/audios/' + playlist[treck];
-  	audio.volume = 0.2;
-}
 
-function switchTreck (numTreck) {
-    // Меняем значение атрибута src
-    audio.src = './assets/audios/' + playlist[numTreck];
-    // Назначаем время песни ноль
-    audio.currentTime = 0;
-    // Включаем песню
-    audio.play();
-}
-
-btnPlay.addEventListener("click", function() {
+function playMusic(){
     audio.play(); // Запуск песни
     // Запуск интервала 
     audioPlay = setInterval(function() {
@@ -63,11 +47,43 @@ btnPlay.addEventListener("click", function() {
             switchTreck(treck); //Меняем трек
         }
     }, 10)
+}
+
+function pauseMusic(){
+    audio.pause(); // Останавливает песню
+    clearInterval(audioPlay) // Останавливает интервал
+}
+
+// Событие перед загрузкой страницы
+window.onload = function() {
+    treck = 0; // Присваиваем переменной ноль
+    audio.src = './assets/audios/' + playlist[treck];
+    audio.volume = 0.2;
+}
+
+document.body.addEventListener("mousemove", function () {
+    playMusic();
+})
+
+document.body.addEventListener("touchstart", function () {
+    playMusic();
+})
+
+function switchTreck (numTreck) {
+    // Меняем значение атрибута src
+    audio.src = './assets/audios/' + playlist[numTreck];
+    // Назначаем время песни ноль
+    audio.currentTime = 0;
+    // Включаем песню
+    audio.play();
+}
+
+btnPlay.addEventListener("click", function() {
+    playMusic();
 });
 
 btnPause.addEventListener("click", function() {
-    audio.pause(); // Останавливает песню
-    clearInterval(audioPlay) // Останавливает интервал
+    pauseMusic();
 });
 
 btnPrev.addEventListener("click", function() {
@@ -89,5 +105,13 @@ btnNext.addEventListener("click", function() {
     } else { // Иначе
         treck = 0; // Присваиваем ей ноль
         switchTreck(treck); // Меняем песню
+    }
+});
+
+document.addEventListener("visibilitychange", function(){
+    if (document.hidden){
+        pauseMusic()
+    } else {
+        playMusic();    
     }
 });
