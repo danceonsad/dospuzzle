@@ -26,6 +26,10 @@ let playlist = [
  
 let treck; // Переменная с индексом трека
 
+function getRandomInt() {
+  return Math.floor(Math.random() * 9);
+}
+
 function playMusic(){
     audio.play(); // Запуск песни
     // Запуск интервала 
@@ -56,18 +60,18 @@ function pauseMusic(){
 
 // Событие перед загрузкой страницы
 window.onload = function() {
-    treck = 0; // Присваиваем переменной ноль
+    treck = getRandomInt(); // Присваиваем переменной ноль
     audio.src = './assets/audios/' + playlist[treck];
     audio.volume = 0.2;
 }
 
-document.body.addEventListener("mousemove", function () {
-    playMusic();
-})
+//document.body.addEventListener("mousemove", function () {
+//    playMusic();
+//})
 
-document.body.addEventListener("touchstart", function () {
-    playMusic();
-})
+//document.body.addEventListener("touchstart", function () {
+//    playMusic();
+//})
 
 function switchTreck (numTreck) {
     // Меняем значение атрибута src
